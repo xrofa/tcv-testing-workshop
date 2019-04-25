@@ -31,7 +31,8 @@ const TCV = styled.img`
 `
 
 const Presentation = ({ history }) => {
-  const showLogo = window.location.hash === '' || window.location.hash === '#/0'
+  const showLogo =
+    window.location.hash === '#/' || window.location.hash === '#/0'
   return (
     <React.Fragment>
       {showLogo && <TCV src={logo} onClick={() => history.push('/')} />}
@@ -432,6 +433,21 @@ const Presentation = ({ history }) => {
               <Text size={6} textColor='tertiary'>
                 Not really useful for building UI
               </Text>
+            </Spacer>
+          </Appear>
+        </Slide>
+
+        <Slide transition={['fade']} bgColor='primary'>
+          <Heading size={6} textColor='tertiary' caps>
+            Mocks
+          </Heading>
+          <Appear>
+            <Spacer>
+              <CodePane
+                textSize={24}
+                lang='jsx'
+                source={`import * as utilsMock from '../utils'\nimport capitalizeUserAttributes from '../utils/capitalizeUserAttributes'\n\njest.mock('../utils', () => {\n\treturn {\n\t\tcapitalizeString: jest.fn(string => string)\n\t}\n})`}
+              />
             </Spacer>
           </Appear>
         </Slide>

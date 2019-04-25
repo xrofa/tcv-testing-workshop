@@ -1,6 +1,6 @@
 import add from './index'
 
-// Example of a simple test
+// Example of a simple unit test
 it('Adds numbers correctly', () => {
   // It guarantees that both assertions are made
   expect.assertions(2)

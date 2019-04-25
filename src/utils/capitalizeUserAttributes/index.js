@@ -1,4 +1,4 @@
-import capitalizeString from '../capitalizeString'
+import { capitalizeString } from '../index'
 
 const capitalizeUserAttributes = user =>
   Object.keys(user).reduce((acc, curr) => {
