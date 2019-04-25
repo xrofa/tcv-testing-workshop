@@ -13,6 +13,7 @@ const anotherUser = {
   age: 28,
   email: 'christian.sousa@theventurecode.com'
 }
+
 // Example of a test using a schema to assert
 test('should capitalize user attributes', () => {
   expect(capitalizeUserAttributes(user)).toEqual({
