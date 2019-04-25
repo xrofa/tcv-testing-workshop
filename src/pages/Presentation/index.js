@@ -11,7 +11,8 @@ import {
   Appear,
   Link,
   CodePane,
-  Code
+  Code,
+  Notes
 } from 'spectacle'
 
 import styled from 'styled-components'
@@ -43,6 +44,13 @@ const Presentation = ({ history }) => {
         theme={theme}
       >
         <Slide transition={['zoom']} bgColor='primary'>
+          <Notes>
+            <h4>Notes</h4>
+            <p>
+              Palestra aborda a forma de testar e os princípios de como o fazer,
+              os vários tipos de tests e neste caso como utilizar o Jest
+            </p>
+          </Notes>
           <Heading size={1} fit caps lineHeight={1} textColor='secondary'>
             Testing Practices and Principles
           </Heading>
@@ -61,6 +69,13 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>Temos n tipos de tests que podemos fazer</p>
+            <p>
+              Basicamente os que temos usado mais e que ele também aborda são os
+              unitários e os de integração
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Types of testing
           </Heading>
@@ -94,6 +109,13 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>
+              Servem para testar as funções individualmente uma a uma e os
+              vários casos que podem ter, neste caso combinações de input /
+              output, casos limite
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Unit testing
           </Heading>
@@ -109,6 +131,13 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>
+              Servem para testar as funções individualmente uma a uma e os
+              vários casos que podem ter, neste caso combinações de input /
+              output, casos limite
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             End-to-End Testing
           </Heading>
@@ -136,6 +165,12 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>
+              Serve para testar a integração da app neste caso FE com BE, ou BE
+              com BD
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Integration Testing
           </Heading>
@@ -177,6 +212,14 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>Podemos falar sobre o tipo de erro que este codigo manda</p>
+            <p>
+              Nao vai ser um erro bom, claro, que mostre informacao util, apenas
+              que nao sao iguais
+            </p>
+            <p>Por isso usamos libs que ja existem :)</p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Let's build our testing framework
           </Heading>
@@ -192,6 +235,13 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>
+              Assertion libraries no fundo são funções auxiliares que são apenas
+              chamadas para nos poupar o trabalho de termos que escrever nós as
+              asserções para testar o nosso código
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Test Frameworks (Jest)
           </Heading>
@@ -272,6 +322,13 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>Podemos dizer que e parecido com proptypes</p>
+            <p>
+              Alem de fazer match com um schema, podemos dar indicacoes de
+              assertions para fields
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Schema Comparison
           </Heading>
@@ -287,6 +344,12 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>Aqui podemos abrir o terminal e mostrar o watch mode</p>
+            <p>
+              Ou entao podemos deixar para mais tarde quando mostrarmos a demo
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Jest
           </Heading>
@@ -322,6 +385,12 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>
+              Podemos dizer que vamos mostrar este exemplo mais tarde durante a
+              demo
+            </p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Writing Unit Tests
           </Heading>
@@ -368,6 +437,9 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>jest-in-case optimo para criar test factories</p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Test Factories
           </Heading>
@@ -377,6 +449,24 @@ const Presentation = ({ history }) => {
                 textSize={24}
                 lang='jsx'
                 source={`describe('Are these passwords allowed', () => {\n\n\tconst allowedPasswords = ['abc.1234.abc', '1abcab1', '12312ab']\n\n\tallowedPasswords.forEach(password => {\n\t\ttest(\`"\${password}" should be allowed\`, () => {\n\t\t\tconst isAllowed = isPasswordAllowed(password)\n\t\t\texpect(isAllowed).toEqual(true)\n\t\t})\n\t})\n})`}
+              />
+            </Spacer>
+          </Appear>
+        </Slide>
+
+        <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>jest-in-case optimo para criar test factories</p>
+          </Notes>
+          <Heading size={6} textColor='tertiary' caps>
+            Test Factories with jest-in-case
+          </Heading>
+          <Appear>
+            <Spacer>
+              <CodePane
+                textSize={24}
+                lang='jsx'
+                source={`import cases from 'jest-in-case'\n\n// cases(title, tester, testCases)\ncases('add(a, b)', case => {\n\texpect(add(case.a, case.b)).toBe(case.total)\n}, [\n\t{ name: '1 + 1 = 2', a: 1, b: 1, total: 2 },\n\t{ name: '2 + 1 = 3', a: 2, b: 1, total: 3 },\n\t{ name: '3 + 1 = 4', a: 3, b: 1, total: 4 },\n])`}
               />
             </Spacer>
           </Appear>
@@ -438,6 +528,11 @@ const Presentation = ({ history }) => {
         </Slide>
 
         <Slide transition={['fade']} bgColor='primary'>
+          <Notes>
+            <p>Fake version of something</p>
+            <p>Fake services</p>
+            <p>Fake modules</p>
+          </Notes>
           <Heading size={6} textColor='tertiary' caps>
             Mocks
           </Heading>
